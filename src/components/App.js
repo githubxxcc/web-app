@@ -19,8 +19,8 @@ import ChallengerWelcome from "./ChallengerWelcome/ChallengerWelcome";
 import ElectionReminder from "./ElectionReminders/ElectionReminder";
 import Footer from "./Footer";
 import PlayerWelcome from "./PlayerWelcome";
-import Actions from "./Actions";
-import VoterRegistration from "./VoterRegistration";
+import Actions from "./Actions/Actions";
+import VoterRegistrationForm from "./VoterRegistration/VoterRegistrationForm";
 import TOS from "./TOS/TOS";
 
 export default function App() {
@@ -54,7 +54,10 @@ export default function App() {
                 <Route path="/playerwelcome" component={PlayerWelcome} />
                 <Route path="/share" component={PlayerWelcome} />
                 <Route path="/actions" component={Actions} />
-                <PrivateRoute path="/voterreg" component={VoterRegistration} />
+                <PrivateRoute
+                  path="/voterreg"
+                  component={VoterRegistrationForm}
+                />
                 <Route path="/termsofservice" component={TOS} />
               </Switch>
             </Router>

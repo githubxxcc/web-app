@@ -10,6 +10,7 @@ import './PlayerWelcome.scss'
 import { auth } from "../firebase";
 import { dummyPassword } from "../constants";
 import { useAuth } from "../contexts/AuthContext";
+import { LoadingWheel } from "./LoadingWheel/LoadingWheel.component";
 
 export default function PlayerWelcome() {
     const history = useHistory(); 
@@ -18,7 +19,6 @@ export default function PlayerWelcome() {
     const [ challengerInfo, setChallengerInfo ] = useState(null);
 
     const url = window.location.href
-    // const code = url.searchParams.get("code")
     const code = url.split('/').pop();
 
     async function getChallengerInfo() {
@@ -48,7 +48,9 @@ export default function PlayerWelcome() {
     }
     
     useEffect(() => {
-        code ? getChallengerInfo() : setChallengerInfo(JSON.parse(localStorage.getItem("challengerInfo")))
+        code
+      ? getChallengerInfo()
+      : setChallengerInfo(JSON.parse(localStorage.getItem("challengerInfo")));
     }, []);
 
     useEffect(() => {
@@ -58,7 +60,7 @@ export default function PlayerWelcome() {
 
     
     return (
-        loading === false ? 
+        loading === false ? (
         <div className="player-welcome">
             <div className="top">
                 <h1 className="top-heading">
@@ -112,7 +114,9 @@ export default function PlayerWelcome() {
                 <Button onClick={() => {history.push(`/actions`)}}>Get Started</Button>
                 <p align="center" className="small-text">Already have an account? <a href="/signin"><b>Sign In</b></a></p>
             </div>
-            </div>
-            : <h1>loading</h1>
+        </div>
+        ) : (
+        <LoadingWheel overlay={false}/>
+        )
     ) 
 }
