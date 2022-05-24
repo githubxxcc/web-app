@@ -104,8 +104,12 @@ function Header() {
               <img src={logo} alt="8by8 logo" id="brand-logo" />
             </Navbar.Brand>
             <div id="icons-tray">
-              <Nav.Link to="#" id="sidebar-icon">
+              {/* <Nav.Link to="#" id="sidebar-icon">
                 <MdIcons.MdNotificationsNone onClick={showNotif} />
+              </Nav.Link>
+              */}
+              <Nav.Link href="//www.8by8.us" id="feedback-icon">
+                <MdIcons.MdFeedback/>
               </Nav.Link>
               <Nav.Link to="#" id="notif-icon">
                 <FaIcons.FaBars onClick={showSidebar} />
